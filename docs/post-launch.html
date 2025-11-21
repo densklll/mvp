@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP запущен — что делать дальше? План после запуска | @densklll</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <meta name="description" content="Что делать после запуска MVP: план на первые недели — как найти первых пользователей, собрать отзывы, расставить приоритеты, укрепить код и запустить рост. Пошаговые рекомендации.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="@densklll">
+    <meta name="theme-color" content="#0A0E14">
+    <link rel="canonical" href="/docs/post-launch.html">
+    <link rel="alternate" href="/docs/post-launch.html" hreflang="ru">
+    <link rel="alternate" href="/docs/post-launch.html" hreflang="x-default">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Документы — @densklll">
+    <meta property="og:title" content="MVP запущен — что делать дальше?">
+    <meta property="og:description" content="Что делать после запуска MVP: план на первые недели — как найти первых пользователей, собрать отзывы, расставить приоритеты, укрепить код и запустить рост. Пошаговые рекомендации.">
+    <meta property="og:url" content="/docs/post-launch.html">
+    <meta property="og:image" content="/favicon.ico">
+    <meta property="og:image:alt" content="План после запуска MVP">
+    <meta property="article:author" content="https://t.me/densklll_dev">
+    <meta property="article:section" content="MVP, Запуск, Рост">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="MVP запущен — что делать дальше?">
+    <meta name="twitter:description" content="План на первые недели: первые пользователи, отзывы, приоритизация задач, укрепление кода, сообщество.">
+    <meta name="twitter:image" content="/favicon.ico">
+    <meta name="twitter:site" content="@densklll">
+    <meta name="twitter:creator" content="@densklll">
+    <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <!-- Preload local fonts to reduce FOIT/FOUT -->
+    <link rel="preload" href="../font/Montserrat/Montserrat-Light.ttf" as="font" type="font/ttf">
+    <link rel="preload" href="../font/Montserrat/Montserrat-Regular.ttf" as="font" type="font/ttf">
+    <link rel="preload" href="../font/Montserrat/Montserrat-SemiBold.ttf" as="font" type="font/ttf">
+    <link rel="preload" href="../font/Montserrat/Montserrat-Bold.ttf" as="font" type="font/ttf">
+    <link rel="preload" href="../font/Songer/SONGER_G_Regular.otf" as="font" type="font/otf">
+    <link rel="preload" href="../font/Songer/SONGER_G_Bold.otf" as="font" type="font/otf">
+    <link rel="preload" href="../font/Songer/SONGER_G_ExtraBold.otf" as="font" type="font/otf">
+    <style>
+        /* Local font faces */
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('../font/Montserrat/Montserrat-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('../font/Montserrat/Montserrat-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('../font/Montserrat/Montserrat-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('../font/Montserrat/Montserrat-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        /* Songer (G set) for headings */
+        @font-face {
+            font-family: 'Songer';
+            src: url('../font/Songer/SONGER_G_Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Songer';
+            src: url('../font/Songer/SONGER_G_Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Songer';
+            src: url('../font/Songer/SONGER_G_ExtraBold.otf') format('opentype');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+        :root{
+            --bg: #0A0E14;
+            --surface: #0F1521;
+            --text: #E6EAF2;
+            --text-dim: #AEB7C2;
+            --accent: #00A3FF;
+            --accent-70: rgba(0,163,255,.7);
+            --accent-40: rgba(0,163,255,.4);
+            --radius: 14px;
+        }
+        /* Уважение к предпочтениям пользователя: минимум движения */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+        }
+        body {
+            font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #EAEAEA;
+            overflow-x: hidden;
+            line-height: 1.7;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background:
+              radial-gradient(1200px 800px at 80% -200px, rgba(0,163,255,.10), transparent 60%),
+              radial-gradient(900px 700px at -120px 220px, rgba(124,77,255,.08), transparent 60%),
+              radial-gradient(700px 600px at 110% 30%, rgba(0,221,255,.06), transparent 65%),
+              radial-gradient(600px 500px at 40% 120%, rgba(255,92,135,.05), transparent 65%),
+              linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0) 30%),
+              #0A0E14;
+        }
+        
+        /* Едва заметная зернистость для благородного фона */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.02"/></svg>');
+            mix-blend-mode: overlay;
+        }
+        /* Едва заметная сетка на фоне */
+        body::after {
+            content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+            background-image:
+              radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,0.22), transparent 60%),
+              linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 48px 48px, 48px 48px;
+            background-position: center center, center center, center center;
+            mix-blend-mode: overlay;
+        }
+        h1 { font-family: 'Songer', 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif; }
+        .card h2, .footer-card h2 {
+            font-family: 'Songer', 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 700;
+            color: #CFE8FF;
+            letter-spacing: -0.01em;
+        }
+        strong, b { font-weight: 400; }
+        
+        /* Градиентный текст для ключевых заголовков */
+        .text-gradient { background: linear-gradient(90deg, #00A3FF, #7C4DFF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        /* Уменьшаем вертикальные отступы между секциями как в requirements */
+        .space-y-20 > :not([hidden]) ~ :not([hidden]) { margin-top: 2.45rem !important; }
+        /* Hero оформление */
+        .hero { position: relative; }
+        .hero-eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.875rem; color: var(--accent-70); margin-bottom: 0.5rem; }
+        /* Вместо полоски — мягкое свечение «aurora» позади заголовка */
+        .hero-ribbon {
+            position: absolute; left: 50%; transform: translateX(-50%); top: 54%;
+            width: clamp(320px, 80%, 1040px); height: 200px;
+            pointer-events: none; z-index: 0;
+            background:
+              radial-gradient(40% 70% at 30% 50%, rgba(0,163,255,0.22), transparent 65%),
+              radial-gradient(36% 60% at 70% 40%, rgba(124,77,255,0.24), transparent 60%),
+              radial-gradient(20% 40% at 50% 60%, rgba(0,221,255,0.18), transparent 60%);
+            filter: blur(18px) saturate(115%);
+            mix-blend-mode: screen;
+            border-radius: 9999px;
+            opacity: 0.75;
+            animation: none;
+            will-change: transform;
+        }
+        .hero h1 { position: relative; z-index: 1; letter-spacing: -0.01em; }
+        /* Анимация заголовка после загрузки шрифтов (как в requirements) */
+        .hero h1 { opacity: 0; transform: translateY(8px); transition: opacity .55s ease, transform .6s cubic-bezier(.22,1,.36,1); }
+        html.fonts-loaded .hero h1, .hero.visible h1 { opacity: 1; transform: none; }
+        /* Дроп-кэп отключён для первого абзаца вступления */
+        /* Выделение первого абзаца во вступлении */
+        .intro .lead {
+            background: linear-gradient(90deg, rgba(0,163,255,0.10), rgba(124,77,255,0.10));
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 14px;
+            padding: 16px 18px;
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            margin-inline: 0;
+            box-sizing: border-box;
+            text-wrap: balance;
+            hyphens: auto;
+        }
+        /* Вертикальный акцент для всей карточки вступления */
+        .intro-card { position: relative; }
+        .intro-card::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0; width: 4px;
+            background: linear-gradient(180deg, #00A3FF, #7C4DFF);
+            opacity: 0.85;
+        }
+        /* Баланс переносов для вступительного текста */
+        .intro p { text-wrap: balance; }
+        /* Центрированный заголовок с аккуратной нижней чертой */
+        .title-center-underline {
+            position: relative;
+            display: inline-block;
+            margin-inline: auto;
+            padding-bottom: 0.4rem;
+        }
+        .title-center-underline::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -0.2rem;
+            width: 80px;
+            height: 3px;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #00A3FF, #7C4DFF);
+            opacity: 0.85;
+        }
+        /* Вертикальная градиентная метка у заголовков секций */
+        .section-title { position: relative; padding-left: 1rem; }
+        .section-title::before {
+            content: ""; position: absolute; left: 0; top: 0.2em; bottom: 0.2em; width: 4px;
+            border-radius: 3px; background: linear-gradient(180deg, #00A3FF, #7C4DFF); opacity: 0.85;
+        }
+        .accent-text { color: inherit; transition: color .24s ease; }
+        .card:hover .accent-text, .card:focus-within .accent-text { color: var(--accent); }
+        .card {
+            --hl: 0%;
+            --vl: 0%;
+            border: 1px solid transparent;
+            background:
+              linear-gradient(#0F1521, #0F1521) padding-box,
+              linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,0)) border-box;
+            border-radius: var(--radius);
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 24px rgba(0, 0, 0, 0.28);
+            transition: transform .45s cubic-bezier(.22,1,.36,1), border-color .2s ease, box-shadow .3s ease;
+            transform: translateZ(0);
+            will-change: transform;
+            content-visibility: auto;
+            contain-intrinsic-size: 600px 800px;
+        }
+        /* Декоративные угловые подсветки на карточках (кроме кастомных) */
+        .card:not(.intro-card)::before {
+            content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+            background:
+              radial-gradient(140px 140px at 0% 0%, rgba(0,163,255,0.08), rgba(0,163,255,0) 60%),
+              radial-gradient(180px 180px at 100% 100%, rgba(124,77,255,0.08), rgba(124,77,255,0) 60%);
+        }
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: inherit;
+            background-image:
+              linear-gradient(90deg, var(--accent-40), var(--accent-70)),
+              linear-gradient(90deg, var(--accent-40), var(--accent-70)),
+              linear-gradient(0deg, var(--accent-40), var(--accent-70)),
+              linear-gradient(0deg, var(--accent-40), var(--accent-70)),
+              radial-gradient(closest-side, rgba(0,163,255,0.10), transparent 70%);
+            background-position:
+              top left,
+              bottom left,
+              top left,
+              top right,
+              right -10% top -20%;
+            background-size:
+              var(--hl) 1px,
+              var(--hl) 1px,
+              1px var(--vl),
+              1px var(--vl),
+              320px 320px;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: background-size .8s cubic-bezier(.25,.9,.24,1), opacity .3s ease;
+        }
+        .card:hover { --hl: 100%; --vl: 100%; border-color: rgba(255,255,255,0.10); transform: translateY(-2px); }
+        .card:focus-within { --hl: 100%; --vl: 100%; }
+        .card:hover::after, .card:focus-within::after { opacity: 1; }
+        .tag {
+            --tag-accent: var(--accent-40);
+            --tag-bg1: rgba(255,255,255,0.04);
+            --tag-bg2: rgba(255,255,255,0.02);
+            --tag-br: rgba(255,255,255,0.08);
+            --tag-icon: none;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: var(--radius);
+            border: 1px solid var(--tag-br);
+            background: linear-gradient(180deg, var(--tag-bg1), var(--tag-bg2));
+            border-left: 4px solid var(--tag-accent);
+            color: var(--text);
+        }
+        .tag::before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--tag-accent);
+            background-image: var(--tag-icon);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 10px 10px;
+            flex: 0 0 18px;
+            margin-top: 2px;
+        }
+        .tag-green { 
+            --tag-accent: #2ECC71; 
+            --tag-bg1: rgba(46,204,113,0.10); 
+            --tag-bg2: rgba(46,204,113,0.06); 
+            --tag-br: rgba(46,204,113,0.25);
+            --tag-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="%23ffffff" d="M6.2 11.2L3.5 8.5l-1.2 1.2 3.9 3.9 8-8-1.2-1.2-6.8 6.8z"/></svg>');
+        }
+        .tag-yellow { 
+            --tag-accent: #F1C40F; 
+            --tag-bg1: rgba(241,196,15,0.10); 
+            --tag-bg2: rgba(241,196,15,0.06); 
+            --tag-br: rgba(241,196,15,0.25);
+            --tag-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="%23ffffff" d="M7.25 3h1.5v7h-1.5V3zm0 9h1.5v1.5h-1.5V12z"/></svg>');
+        }
+        .tag-red { 
+            --tag-accent: #E74C3C; 
+            --tag-bg1: rgba(231,76,60,0.10); 
+            --tag-bg2: rgba(231,76,60,0.06); 
+            --tag-br: rgba(231,76,60,0.25);
+            --tag-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="%23ffffff" d="M7.257 1.067a1 1 0 011.486 0l6.18 7.09A1 1 0 0114.18 10H1.82a1 1 0 01-.743-1.843l6.18-7.09zM9 11H7v2h2v-2zm0-6H7v5h2V5z"/></svg>');
+        }
+
+        /* Reveal-on-scroll: скрыто по умолчанию + плавное появление */
+        .reveal { opacity: 0; transform: translateY(12px) scale(0.995); transition: transform .6s cubic-bezier(.22,1,.36,1), opacity .6s ease; will-change: transform, opacity; }
+        .reveal.visible, .reveal.is-visible { opacity: 1; transform: none; }
+        .number-accent {
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, rgba(0,163,255,0.12), rgba(124,77,255,0.12));
+            background-size: 200% 100%;
+            animation: gradientShift 24s linear infinite;
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            position: absolute; top: -2rem; left: -1.5rem; z-index: 0; line-height: 1;
+            will-change: background-position;
+        }
+        @keyframes gradientShift {
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        @keyframes floatRibbon {
+            0%   { transform: translateX(-50%) translateY(-6px) scale(1.00); }
+            100% { transform: translateX(-50%) translateY(6px)  scale(1.03); }
+        }
+        @keyframes dotPulse {
+            0%   { transform: scale(0.9); opacity: .55; }
+            70%  { opacity: .18; }
+            100% { transform: scale(2.4); opacity: 0; }
+        }
+        /* Контейнер и ширина текста */
+        .container { max-width: 1160px; }
+        .prose { max-width: 65ch; }
+
+        /* Тонкий градиентный разделитель: очень компактный */
+        .divider { display: block; height: 1px; margin: 6px 0; background: linear-gradient(90deg, transparent, rgba(0,163,255,.24), transparent); opacity: .75; }
+        @media (max-width: 767px){
+            /* Общие мелкие корректировки для мобильных */
+            .divider { display: block; margin: 8px 0; opacity: .45; }
+
+            /* Уменьшаем паддинги карточек и плиток */
+            .card.p-8 { padding: 1rem; }
+            .bento-item.p-6 { padding: 0.875rem; }
+
+            /* Дроп-кэп отсутствует */
+            .intro .lead { padding: 12px; width: 100%; max-width: 100%; margin-inline: 0; }
+
+            /* Лента под заголовком чуть ниже и тоньше */
+            .hero-ribbon { top: 64%; height: 10px; width: clamp(200px, 70%, 520px); }
+
+            /* Декоративный номер секции делаем компактнее */
+            .number-accent { font-size: 3.5rem; top: -1.2rem; left: -1rem; }
+
+            /* Таймлайн: сужаем отступы и бейдж */
+            .flow-steps::before { left: 26px; }
+            .flow-step { padding: 12px 12px 12px 60px; }
+            .flow-badge {
+                width: 30px; height: 30px;
+                left: 12px; top: 12px;
+                font-size: 0.875rem;
+            }
+
+            /* Аккуратнее вертикальная метка у заголовков */
+            .section-title { padding-left: 0.75rem; }
+            .section-title::before { width: 3px; }
+
+            /* Лёгкая корректировка подчеркивания центр‑заголовка */
+            .title-center-underline::after { width: 64px; }
+
+            /* Глобально уменьшаем вертикальный gap между секциями, которые используют space-y-20 */
+            .space-y-20 > :not([hidden]) ~ :not([hidden]) {
+                --tw-space-y-reverse: 0 !important;
+                margin-top: 1.25rem !important; /* 20px вместо 5rem */
+                margin-bottom: 0 !important;
+            }
+
+            /* Теги-комментарии чуть компактнее */
+            .tag { gap: 10px; padding: 10px 12px; }
+            .tag::before { width: 16px; height: 16px; margin-top: 1px; background-size: 9px 9px; }
+            /* Мягкое подсветление карточек компактнее на мобильных */
+            .card::after {
+                background-size:
+                  var(--hl) 1px,
+                  var(--hl) 1px,
+                  1px var(--vl),
+                  1px var(--vl),
+                  240px 240px;
+            }
+
+            /* Мобильная адаптация бейджа подписи */
+            .signature {
+                padding: 6px 10px;
+                gap: 6px;
+                flex-wrap: wrap;
+                justify-content: center;
+                max-width: calc(100% - 32px);
+                text-align: center;
+            }
+            .signature .dot { width: 6px; height: 6px; box-shadow: 0 0 0 2px rgba(0,163,255,0.12), 0 0 10px rgba(124,77,255,0.16); }
+            .signature .handle { font-size: 0.95rem; }
+            .signature .role { font-size: 0.9rem; display: block; width: 100%; color: #B7C1D4; }
+
+            /* Мобильная видимость облаков */
+            .aurora-cloud { position: fixed; left: 50%; transform: translateX(-50%); top: 64px; height: 200px; width: 100%; max-width: 760px; opacity: 0.55; filter: blur(28px) saturate(130%); pointer-events: none; z-index: 2; }
+            .aurora-cloud.bottom { position: fixed; bottom: 64px; top: auto; opacity: 0.45; }
+        }
+
+        /* Bento плитки для кратких тезисов */
+        .bento-item{
+            border: 1px solid transparent;
+            background:
+              linear-gradient(var(--surface), var(--surface)) padding-box,
+              linear-gradient(120deg, rgba(255,255,255,.08), rgba(255,255,255,0)) border-box;
+            border-radius: var(--radius);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 8px 24px rgba(0,0,0,.32);
+            transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+            will-change: transform;
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-item:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 10px 28px rgba(0,0,0,.38); }
+        /* Натуральный мягкий блик: без «проезжающей» полосы */
+        .bento-item::after {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            pointer-events: none;
+            background:
+              radial-gradient(260px 180px at 18% 12%, rgba(255,255,255,0.06), rgba(255,255,255,0) 60%),
+              radial-gradient(320px 220px at 82% 88%, rgba(255,255,255,0.045), rgba(255,255,255,0) 65%);
+            mix-blend-mode: soft-light;
+            opacity: .14;
+            transition: opacity .35s ease;
+            will-change: opacity;
+        }
+        .bento-item:hover::after { opacity: .22; }
+        @keyframes overlayReveal { from { opacity: 0; } to { opacity: .14; } }
+        .bento-item.shine-run::after { animation: overlayReveal .7s ease-out .1s 1 both; }
+        .bento-item h3 { font-weight: 700; color: var(--text); }
+        .bento-item p { color: var(--text-dim); }
+        .bento-icon { width: 24px; height: 24px; stroke: var(--accent-70); margin-right: 8px; }
+        /* Кастомные маркеры списков в карточках */
+        .card ul li::marker { color: var(--accent-70); }
+
+        /* Плавное поэлементное появление контента (стаггер) */
+        .stagger-child { opacity: 0; transform: translateY(10px); transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .45s ease; will-change: transform, opacity; }
+        .stagger-in { opacity: 1; transform: none; }
+        /* Теги: лёгкий поп и подсветка точки при появлении */
+        .tag.stagger-child { transform: translateY(8px) scale(0.98); }
+        .tag.stagger-in { transform: none; }
+        .tag.stagger-in::before { animation: tagDotRing 1.1s ease-out both; }
+        @keyframes tagDotRing {
+            0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.00); }
+            45% { box-shadow: 0 0 0 6px rgba(255,255,255,0.10); }
+            100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.00); }
+        }
+
+        /* Процесс-таймлайн для Раздела 4 */
+        .flow-steps { position: relative; margin-top: 8px; }
+        .flow-steps::before {
+            content: ""; position: absolute; left: 34px; top: 0; bottom: 0; width: 2px;
+            background: linear-gradient(180deg, rgba(0,163,255,0.45), rgba(124,77,255,0.45));
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 10.8s cubic-bezier(.22,1,.36,1);
+        }
+        .flow-steps.is-visible::before { transform: scaleY(1); }
+        .flow-step {
+            position: relative;
+            padding: 14px 16px 14px 76px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+            margin-bottom: 14px;
+        }
+        .flow-step.stagger-child { opacity: 0; transform: translateX(-10px); transition: transform 7.2s cubic-bezier(.22,1,.36,1), opacity 7.2s ease; }
+        .flow-step.stagger-in { opacity: 1; transform: none; }
+        .flow-step:last-child { margin-bottom: 0; }
+        .flow-badge {
+            position: absolute; left: 16px; top: 16px; width: 36px; height: 36px;
+            border-radius: 9999px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: #FFFFFF;
+            background: linear-gradient(180deg, #00A3FF, #7C4DFF);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+        .flow-step.stagger-in .flow-badge { animation: badgePop 4.2s ease-out both; }
+        @keyframes badgePop { 0% { transform: scale(0.7); } 70% { transform: scale(1.04); } 100% { transform: scale(1); } }
+
+        /* Спокойная ghost‑кнопка */
+        .ghost-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: var(--radius); border: 1px solid var(--accent-40); color: var(--accent-70); text-decoration: none; }
+        .ghost-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+        /* Навигация по разделам */
+        .section-nav { margin-top: -8px; }
+        .nav-scroll { display: flex; gap: 10px; overflow-x: auto; padding: 6px; }
+        .nav-scroll::-webkit-scrollbar { display: none; }
+        .pill-link {
+            display: inline-flex; align-items: center;
+            padding: 8px 12px; border-radius: 9999px;
+            border: 1px solid var(--accent-40); color: var(--text-dim);
+            white-space: nowrap; background: rgba(255,255,255,0.02);
+        }
+        .pill-link:hover { color: var(--accent); border-color: var(--accent); }
+        
+        .corner-dots-pattern {
+            display: none; /* декор отключен в luxe-версии */
+        }
+        /* Гарантируем видимость подвала поверх фонов */
+        footer { position: relative; z-index: 10; }
+        /* Aurora‑облака для секций */
+        .aurora-cloud {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -18px;
+            width: min(1000px, 95%);
+            height: 160px;
+            pointer-events: none;
+            z-index: 5; /* поверх card::before/::after, но под контентом */
+            background:
+              radial-gradient(40% 70% at 30% 50%, rgba(0,163,255,0.22), transparent 65%),
+              radial-gradient(36% 60% at 70% 40%, rgba(124,77,255,0.24), transparent 60%),
+              radial-gradient(20% 40% at 50% 60%, rgba(0,221,255,0.18), transparent 60%);
+            filter: blur(30px) saturate(130%);
+            mix-blend-mode: normal;
+            opacity: 0.38;
+            border-radius: 9999px;
+        }
+        /* Более компактная аура в хедере */
+        .hero .aurora-cloud { width: min(720px, 85%); height: 120px; opacity: 0.28; filter: blur(24px) saturate(120%); }
+        .aurora-cloud.bottom { top: auto; bottom: -18px; opacity: 0.14; }
+        @media (min-width: 768px) { .aurora-cloud { animation: auroraDrift 16s ease-in-out infinite alternate; will-change: transform, opacity; }
+            /* Оптимизация: отключаем сетки и шум поверх для экономии GPU на мобильных и медленных девайсах */
+            @media (pointer: coarse) {
+                body::before, body::after { display: none; }
+                .hero-ribbon { animation: none; }
+            }
+        }
+        @keyframes auroraDrift {
+            0%   { transform: translateX(-50%) translateY(-4px) scale(1.00); opacity: .34; }
+            100% { transform: translateX(-50%) translateY(4px)  scale(1.05); opacity: .42; }
+        }
+
+        /* Оформление подписи в хедере */
+        .signature {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 8px 14px; border-radius: 9999px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            color: #C7D2E5;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 8px 24px rgba(0,0,0,0.25);
+            position: relative;
+        }
+        /* Деликатная пульс‑аура вокруг подписи */
+        .signature::after {
+            content: ""; position: absolute; inset: -8px; border-radius: inherit; z-index: -1;
+            background:
+              radial-gradient(closest-side, rgba(0,163,255,0.10), transparent 70%),
+              radial-gradient(closest-side, rgba(124,77,255,0.08), transparent 75%);
+            filter: blur(10px) saturate(120%);
+            opacity: .18;
+            animation: signaturePulse 3s ease-in-out infinite;
+            will-change: opacity, transform;
+        }
+        @keyframes signaturePulse { 0% { opacity: .14; transform: scale(0.98); } 50% { opacity: .27; transform: scale(1.02); } 100% { opacity: .14; transform: scale(0.98); } }
+        .signature .dot {
+            width: 8px; height: 8px; border-radius: 9999px;
+            background: linear-gradient(180deg, #00A3FF, #7C4DFF);
+            box-shadow: 0 0 0 2px rgba(0,163,255,0.14), 0 0 12px rgba(124,77,255,0.18);
+            position: relative;
+        }
+        .signature .handle {
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            background: none;
+            -webkit-background-clip: initial;
+            background-clip: initial;
+            color: inherit;
+            text-decoration: none;
+            transition: transform .2s ease;
+            cursor: pointer;
+        }
+        .signature .handle:hover, .signature .handle:focus-visible { outline: none; }
+        .signature .handle::after { display: none; }
+        .signature .sep { color: rgba(255,255,255,0.38); }
+        .signature .role { position: relative; display: inline-block; color: #AEB7C2; }
+        .signature .role .role-base { color: #AEB7C2; }
+        .signature .role .role-grad {
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 0%;
+            overflow: hidden;
+            white-space: nowrap;
+            background: linear-gradient(90deg, #00A3FF, #7C4DFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            pointer-events: none;
+            transition: width .5s ease;
+        }
+        .signature:hover .role .role-grad,
+        .signature:focus-visible .role .role-grad { width: 100%; }
+        /* Пульсирующие волны вокруг точки */
+        .signature .dot::after,
+        .signature .dot::before {
+            content: "";
+            position: absolute;
+            inset: -4px;
+            border-radius: inherit;
+            border: 2px solid rgba(0,163,255,0.38);
+            transform: scale(0.9);
+            opacity: 0;
+            animation: dotPulse 1.8s ease-out infinite;
+            pointer-events: none;
+        }
+        .signature .dot::before { inset: -7px; border-color: rgba(124,77,255,0.28); animation-delay: .9s; }
+        
+        /* На тач-экранах: показываем статичный градиент на роли вместо hover-эффекта */
+        @media (hover: none), (pointer: coarse) {
+            .signature .role .role-grad { display: none !important; }
+            .signature .role .role-base {
+                background: linear-gradient(90deg, #00A3FF, #7C4DFF);
+                -webkit-background-clip: text; background-clip: text; color: transparent;
+            }
+        }
+        
+        /* Специальные правила для печати: сохраняем экранный дизайн */
+        @media print {
+            @page { margin: 18mm; }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body { background-color: #0A0E14 !important; color: #EAEAEA !important; }
+            body::before { display: block !important; }
+            body::after { display: block !important; }
+            
+            .card { background: #0F1521 !important; border: 1px solid rgba(255,255,255,0.10) !important; box-shadow: none !important; }
+            .card::before, .card::after { display: block !important; }
+            .card::after { opacity: 1 !important; }
+            
+            .accent-text { color: #0A84FF !important; }
+            
+            .tag-green { border-color: #2ECC71 !important; color: #2ECC71 !important; background: transparent !important; }
+            
+            .tag-yellow { border-color: #F1C40F !important; color: #F1C40F !important; background: transparent !important; }
+            
+            .tag-red { border-color: #E74C3C !important; color: #E74C3C !important; background: transparent !important; }
+            /* Сохраняем декоративные элементы и градиенты где возможно */
+            .corner-dots-pattern { display: block !important; }
+            .text-gradient { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            .divider { display: block !important; }
+            section.card { break-inside: avoid; page-break-inside: avoid; }
+            #s1, #s2, #s3, #s4, #final { break-before: page; page-break-before: always; }
+            .hero-ribbon { display: block !important; }
+        }
+        /* Mobile fixes: override spacing and ensure aurora visibility */
+        @media (max-width: 767px) {
+            /* Performance: disable heavy background overlays */
+            body::before, body::after { display: none !important; }
+
+            /* Calm down animations on mobile to avoid jank */
+            .hero-ribbon { animation: none !important; filter: blur(12px) saturate(110%); }
+            .number-accent { animation: none !important; }
+            .signature::after { animation-duration: 6s !important; opacity: .14 !important; }
+            .signature .dot::after, .signature .dot::before { animation-duration: 2.4s !important; }
+
+            /* Скрываем сепаратор (—) внутри подписи на мобилке */
+            .signature .sep { display: none !important; }
+            /* Футер всегда видим на мобильных */
+            footer.reveal { opacity: 1 !important; transform: none !important; }
+            
+            /* Compact spacing */
+            .mb-16 { margin-bottom: 1rem !important; }
+            .container { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+            .space-y-10 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.875rem !important; }
+
+            /* Compact typography */
+            .hero h1 { font-size: clamp(1.75rem, 6vw, 2rem); line-height: 1.15; margin-bottom: 0.5rem !important; }
+            .card h2, .section-title { font-size: 1.125rem; line-height: 1.25; }
+            .card h3 { font-size: 1rem; line-height: 1.3; }
+
+            /* Fix aurora: keep absolute on mobile and make it visible */
+            .aurora-cloud {
+                position: absolute !important; /* override earlier fixed */
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 120% !important;
+                max-width: none !important;
+                height: 180px !important;
+                top: -8px !important;
+                opacity: 0.38 !important;
+                filter: blur(14px) saturate(120%) brightness(1.02) !important;
+                mix-blend-mode: normal !important;
+                z-index: 0 !important; /* behind text/content */
+                animation: none !important; /* отключаем дыхание на мобильных ради производительности */
+            }
+            .aurora-cloud.bottom { bottom: -12px !important; top: auto !important; opacity: 0.5 !important; }
+
+            /* In header: place aurora right behind the title */
+            .hero .aurora-cloud {
+                position: absolute !important;
+                top: 22px !important;
+                width: 100% !important;
+                height: 140px !important;
+                z-index: 0 !important; /* h1 has z-index:1, so cloud sits behind it */
+                opacity: 0.55 !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103669120', 'ym');
+
+        ym(103669120, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/103669120" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <!-- Фоновый canvas отключён для упрощения визуала -->
+    <!-- <canvas id="background-canvas"></canvas> -->
+
+    <div class="relative z-10">
+        <div class="container mx-auto px-4 py-12 md:py-24">
+
+            <!-- Header -->
+            <header class="text-center mb-16 reveal hero">
+                <div class="hero-eyebrow">MVP запущен</div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    <span class="text-gradient">Самая лёгкая часть позади.</span>
+                    <br>
+                    Что делать дальше?
+                </h1>
+                <div class="hero-ribbon"></div>
+                <div class="flex flex-col items-center gap-3 relative">
+                    <div class="aurora-cloud" aria-hidden="true"></div>
+                    <a href="https://t.me/densklll_dev" target="_blank" rel="noopener" aria-label="Связаться в Telegram @densklll" class="signature text-base md:text-lg">
+                        <span class="dot"></span>
+                        <span class="handle">@densklll</span>
+                        <span class="sep">—</span>
+                        <span class="role">
+                            <span class="role-base">software developer // tech partner</span>
+                            <span class="role-grad">software developer // tech partner</span>
+                        </span>
+                    </a>
+                </div>
+            </header>
+
+            <main class="space-y-20">
+                <!-- Вступление -->
+                <section id="vstuplenie" class="card p-8 relative reveal intro-card">
+                    <canvas class="corner-dots-pattern"></canvas>
+                    <div class="aurora-cloud bottom" aria-hidden="true"></div>
+                    <div class="relative z-20">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-4 accent-text">Вступление</h2>
+                        <div class="space-y-4 text-gray-300 intro">
+                            <p class="lead">Итак, мы запустились! Это, конечно, важный шаг, но на самом деле, всё самое интересное и сложное только начинается.</p>
+                            <p>Ваш MVP — это не готовый бизнес, а скорее лакмусовая бумажка. Мы просто проверяем, как рынок на него отреагирует. Так что сейчас наша главная задача — не придумывать что-то новое, а внимательно слушать и смотреть, что делают первые пользователи.</p>
+                            <p>Этот документ, концентрат моего опыта — простая и понятная шпаргалка, которая поможет нам пройти этот путь правильно.</p>
+                        </div>
+                    </div>
+                </section>
+                <!-- В двух словах -->
+                <section id="summary" class="card p-8 relative reveal">
+                    <canvas class="corner-dots-pattern"></canvas>
+                    <div class="aurora-cloud" aria-hidden="true"></div>
+                    <div class="relative z-20">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center title-center-underline">В двух словах</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bento-item p-6 md:col-span-2">
+                                <div class="mb-3 text-gradient font-bold uppercase tracking-wide text-sm">Шаг 0</div>
+                                <h3 class="text-lg mb-2">Честные отзывы</h3>
+                                <p>Сейчас главное — не гнаться за ростом, а собрать честные отзывы от 10-20 реальных людей.</p>
+                            </div>
+                            <div class="bento-item p-6">
+                                <div class="mb-3 text-gradient font-bold uppercase tracking-wide text-sm">Фокус</div>
+                                <h3 class="text-lg mb-2">Учимся у рынка</h3>
+                                <p>Ваша задача — стать «учеником»: находить первых пользователей вручную, чтобы понять, что у них болит.</p>
+                            </div>
+                            <div class="bento-item p-6 md:col-span-3">
+                                <div class="mb-3 text-gradient font-bold uppercase tracking-wide text-sm">Подход</div>
+                                <h3 class="text-lg mb-2">Итерации по фактам</h3>
+                                <p>Улучшайте продукт маленькими шажками, опираясь на реальные факты, а не на догадки.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="divider"></div>
+                <!-- Раздел 1 -->
+                <section id="s1" class="card p-8 relative reveal">
+                    <canvas class="corner-dots-pattern"></canvas>
+                    <div class="aurora-cloud" aria-hidden="true"></div>
+                    <div class="relative z-20">
+                        <div class="number-accent">01</div>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-2 section-title">Раздел 1: Ищем правду — учимся у первых пользователей</h2>
+                        <p class="text-gray-400 mb-8">Цель этого этапа — просто понять, в ту ли сторону мы вообще идём.</p>
+
+                        <div class="space-y-10">
+                            <!-- Шаг 1 -->
+                            <div>
+                                <h3 class="font-bold text-xl mb-3">Шаг 1: Находим первых пользователей (руками!)</h3>
+                                <p class="text-gray-300 mb-3">Продукт запущен, но сам себя он не продаст, верно? Так что сейчас нужно не вбухивать деньги в рекламу, а просто позвать человек 10-20 лично.</p>
+                                <p class="text-gray-400">Что делать:</p>
+                                <ul class="list-disc list-inside text-gray-300 space-y-2 mt-2">
+                                    <li><span class="font-semibold">Ближний круг (только правильно!).</span> Попросите 5-10 знакомых, которые идеально подходят на роль вашего клиента. Только не просите просто «оценить сайт», а дайте конкретное задание: «Слушай, можешь попробовать [сделать главное действие в продукте]? Мне очень важно посмотреть, где у тебя возникнут трудности».</li>
+                                    <li><span class="font-semibold">Идите туда, где у людей реально «болит».</span> Подумайте, где сидят ваши будущие клиенты (форумы, чаты). Найдите ветку, где кто-то жалуется на проблему, и просто предложите решение: «Ребята, у меня тоже такое было, и я сделал вот такую штуку. Может, и вам пригодится».</li>
+                                    <li><span class="font-semibold">Станьте личным помощником.</span> Первым клиентам нужно помочь во всём. Напишите им, предложите созвониться, проведите за ручку. Да, это долго, но именно так и появляются самые преданные фанаты!</li>
+                                </ul>
+                                <div class="mt-4">
+                                    <div class="tag tag-green">Фокус: Качество, а не количество! 5 человек, которые решили свою проблему с вашей помощью, гораздо ценнее 1000 случайных регистраций.</div>
+                                </div>
+                            </div>
+
+                            <!-- Шаг 2 -->
+                            <div>
+                                <h3 class="font-bold text-xl mb-3">Шаг 2: Собираем и разбираем отзывы</h3>
+                                <p class="text-gray-300 mb-3">Как только появятся первые пользователи, на вас свалится куча разных мнений.</p>
+                                <p class="text-gray-400">Что делать:</p>
+                                <ul class="list-disc list-inside text-gray-300 space-y-2 mt-2">
+                                    <li>Слушайте «своих», а не всех подряд. Вам нужны мнения только тех, для кого вы и делали продукт.</li>
+                                    <li>Ищите то, что повторяется. Один человек не нашёл кнопку — бывает. Десять человек не нашли — это уже косяк в дизайне.</li>
+                                    <li>Спрашивайте о прошлом, а не о будущем. Вместо «А вы бы это купили?» спросите: «А как вы раньше с этой проблемой справлялись?».</li>
+                                    <li>Скидывайте всё в одно место. Заведите простую доску в Trello или табличку, чтобы ничего не потерять.</li>
+                                </ul>
+                                <div class="mt-4">
+                                    <div class="tag tag-green">Фокус: Тут всё как у хорошего доктора, а не как у официанта. Не надо спрашивать: «Чего желаете?». Надо ставить диагноз по симптомам. Люди отлично расскажут, что у них болит, но в качестве лекарства почти всегда предложат что-то дикое.</div>
+                                </div>
+                            </div>
+
+                            <!-- Шаг 3 -->
+                            <div>
+                                <h3 class="font-bold text-xl mb-3">Шаг 3: Главные цифры для старта</h3>
+                                <p class="text-gray-300 mb-3">Сейчас ваш продукт — как пациент. Не нужно делать ему полное МРТ. Просто следим за тремя главными показателями:</p>
+                                <ul class="list-disc list-inside text-gray-300 space-y-2 mt-2">
+                                    <li><span class="font-semibold">Активация.</span> Люди вообще поняли, в чём главная фишка? (Какой процент сделал то самое ключевое действие, ради которого всё и затевалось).</li>
+                                    <li><span class="font-semibold">Удержание.</span> Сколько людей вернулось к вам через неделю? Если никто не возвращается, значит, продукт пока не цепляет.</li>
+                                    <li><span class="font-semibold">Первая оплата.</span> Если продукт платный, сколько людей достали кошелёк? Это самый честный экзамен на полезность.</li>
+                                </ul>
+                                <div class="mt-4">
+                                    <div class="tag tag-yellow">Фокус: Пример: из 20 регистраций 15 человек вернулись через неделю (75% удержания) — это супер! А если из 500 регистраций вернулось 10 (2% удержания) — это плохой знак. Значит, надо разбираться в причинах, а не лить трафик дальше.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="divider"></div>
+                
+                <!-- Раздел 2 -->
+                <section id="s2" class="card p-8 relative reveal">
+                    <canvas class="corner-dots-pattern"></canvas>
+                    <div class="aurora-cloud" aria-hidden="true"></div>
+                    <div class="relative z-20">
+                        <div class="number-accent">02</div>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-2 section-title">Раздел 2: Улучшения — делаем продукт лучше</h2>
+                        <p class="text-gray-400 mb-8">Итак, мы получили первые отзывы. Теперь задача — быстро и точечно улучшать продукт.</p>
+
+                        <div class="space-y-10">
+                            <!-- Шаг 4 -->
+                            <div>
+                                <h3 class="font-bold text-xl mb-3">Шаг 4: Расставляем задачи по полочкам</h3>
+                                <p class="text-gray-300 mb-3">У вас появится огромный список идей. Без системы он превратится в свалку. Вот простой фильтр. Просто спросите себя: «Эта задача чинит то, что уже сломано, или строит то, что принесёт пользу большинству?»</p>
+                                <ul class="list-disc list-inside text-gray-300 space-y-3 mt-2">
+                                    <li>
+                                        <span class="font-semibold">Пожары:</span> Всё, что мешает людям пользоваться продуктом прямо сейчас.
+                                        <div class="text-gray-400 text-sm mt-1">Пример: «Не работает оплата», «Приложение падает».</div>
+                                    </li>
+                                    <li>
+                                        <span class="font-semibold">Главное дело:</span> Задачи, которые улучшают самую главную функцию продукта для ваших основных клиентов.
+                                        <div class="text-gray-400 text-sm mt-1">Пример: «Сделать распознавание на 20% быстрее», «Добавить поддержку нужного формата».</div>
+                                    </li>
+                                    <li>
+                                        <span class="font-semibold">Всякие «блестяшки» и хотелки:</span> Функции, которые выглядят прикольно или которые очень просит один-два человека, но которые не решают проблему большинства.
+                                        <div class="text-gray-400 text-sm mt-1">Пример: «Добавить 100 новых шрифтов», «Сделать 15 цветовых тем».</div>
+                                    </li>
+                                </ul>
+                                <div class="mt-4 space-y-2">
+                                    <div class="tag tag-red">Что делать (Пожары): Тушим немедленно! Вообще без вариантов.</div>
+                                    <div class="tag tag-green">Что делать (Главное дело): Это самое важное. Именно эти задачи делают продукт по-настоящему крутым и любимым.</div>
+                                    <div class="tag tag-yellow">Что делать (Блестяшки): Это самые опасные штуки! Они съедают кучу времени, а толку ноль. Просто вежливо говорим: «Спасибо за идею, записали!» и... откладываем в долгий ящик.</div>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="tag tag-green">Фокус: Ваша задача — не делать всё подряд, а делать умные ставки. Всегда спрашивайте: «Какую проблему большинства мы решим этой новой фичей?»</div>
+                                </div>
+                            </div>
+
+                            <!-- Шаг 5 -->
+                            <div>
+                                <h3 class="font-bold text-xl mb-3">Шаг 5: Разбираем «костыли» в коде</h3>
+                                <p class="text-gray-300 mb-3">Чтобы запуститься быстрее, мы где-то подпёрли «костылями» и наклеили «скотч». Это нормально! Но теперь надо потихоньку всё это разбирать и делать по-человечески, чтобы наш «дом» не развалился.</p>
+                                <p class="text-gray-400">Что делать:</p>
+                                <ul class="list-disc list-inside text-gray-300 space-y-2 mt-2">
+                                    <li>Знать о них. У нас будет отдельный список таких мест.</li>
+                                    <li>Выделять на это время. Важно понимать, что часть времени всегда будет уходить на укрепление «фундамента», а не только на новые фичи.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="divider"></div>
+                
+                <!-- Раздел 3 -->
+                <section id="s3" class="card p-8 relative reveal">
+                    <canvas class="corner-dots-pattern"></canvas>
+                    <div class="aurora-cloud" aria-hidden="true"></div>
+                    <div class="relative z-20">
+                        <div class="number-accent">03</div>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-2 section-title">Раздел 3: Рост — от продукта к сообществу</h2>
+                        <p class="text-gray-400 mb-8">Когда продукт работает стабильно и люди им пользуются, пора собирать вокруг себя своих людей.</p>
+
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="font-bold text-xl mb-3">Шаг 6: Создаём сообщество</h3>
+                                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                    <li><span class="font-semibold">Объединяйте людей!</span> Ваши первые 10-20 клиентов — это просто золото! Это ваш фан-клуб, ваши первые настоящие помощники. Сделайте для них закрытый чат, советуйтесь с ними.</li>
+                                    <li><span class="font-semibold">Наградите первых.</span> Дайте им пожизненную скидку или бесплатный доступ к новым фичам. Такое отношение превращает клиентов в фанатов, которые будут рассказывать о вас всем. Их преданность — это то, что конкуренты у вас никогда не скопируют. Это ваш главный козырь!</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="tag tag-green">Фокус: Главная цель — не просто сделать продукт, которым пользуются, а создать то, что по-настоящему любят. «Рабочий» продукт решает проблему. «Любимый» — становится частью жизни, и им хочется делиться. Это переход от «ну, спасибо, работает» к «вау, как я вообще без этого жил?!»</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="divider"></div>
+                
+                <!-- Раздел 4 -->
+                <section id="s4" class="card p-8 relative reveal">
+                    <canvas class="corner-dots-pattern"></canvas>
+                    <div class="aurora-cloud" aria-hidden="true"></div>
+                    <div class="relative z-20">
+                        <div class="number-accent">04</div>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-2 section-title">Раздел 4: от MVP к любимому продукту (и дальше)</h2>
+                        <p class="text-gray-400 mb-8">А теперь давай соберём всё в одну понятную картину. Как связаны все эти шаги?</p>
+
+                        <div class="flow-steps">
+                            <div class="flow-step">
+                                <div class="flow-badge">1</div>
+                                <h3 class="font-bold text-xl mb-2">Точка А: Наш MVP (то, что есть сейчас)</h3>
+                                <p class="text-gray-300">Это наша стартовая позиция. Продукт, который просто работает. Это сырой алмаз.</p>
+                            </div>
+                            <div class="flow-step">
+                                <div class="flow-badge">2</div>
+                                <h3 class="font-bold text-xl mb-2">Путь из А в Б: Превращаем алмаз в бриллиант</h3>
+                                <p class="text-gray-300">Все шаги, которые мы описали выше, — это и есть наш процесс «огранки». Мы находим первых ценителей (пользователей), слушаем их (собираем отзывы), убираем лишнее и добавляем блеска (улучшаем продукт).</p>
+                            </div>
+                            <div class="flow-step">
+                                <div class="flow-badge">3</div>
+                                <h3 class="font-bold text-xl mb-2">Точка Б: Наша цель — MLP (Любимый продукт)</h3>
+                                <p class="text-gray-300">Это и есть наш бриллиант. Продукт, который не просто работает, а который вызывает эмоции. Который любят и которым хотят делиться. Это результат нашей с тобой работы по шагам из разделов 1-3.</p>
+                            </div>
+                            <div class="flow-step">
+                                <div class="flow-badge">4</div>
+                                <h3 class="font-bold text-xl mb-2">Что после Точки Б? Ищем рынок и масштабируемся</h3>
+                                <p class="text-gray-300">Когда у нас на руках есть «бриллиант» (MLP), мы начинаем искать для него достойную «витрину» — большой рынок (это называется PMF, Product-Market Fit). И только когда мы его находим, мы переходим на следующий уровень игры: масштабирование. Это уже совсем другая история про рекламу, автоматизацию и рост. Но об этом — в нашем следующем, отдельном плане. Сначала — создаём сокровище.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="divider"></div>
+
+                <!-- Заключение: главный секрет -->
+                <section id="final" class="card p-8 relative reveal">
+                    <canvas class="corner-dots-pattern"></canvas>
+                    <div class="aurora-cloud" aria-hidden="true"></div>
+                    <div class="relative z-20">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-4 section-title">И в заключение: главный секрет</h2>
+                        <div class="space-y-4 text-gray-300">
+                            <p>В общем, главный секрет — в упорстве после запуска. Никакой магии, просто работа. Надо быть готовым честно смотреть на цифры и признавать: «Окей, эта фича, в которую я вложил всю душу, оказалась никому не нужна». И спокойно её выкинуть.</p>
+                            <p>Этот путь мы пройдём вместе. Как будем работать? Вы следите за рынком и клиентами, а я — быстро и качественно превращаю ваши идеи в работающий продукт. Так и будем двигаться вперёд: идея — продукт — данные — новая идея. Это начало нашего партнерства в построении успешного продукта.</p>
+
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer note -->
+            <footer class="mt-16 reveal text-center">
+                <a href="https://t.me/densklll_dev" target="_blank" rel="noopener" aria-label="Связаться в Telegram @densklll" class="signature text-base md:text-lg inline-flex">
+                    <span class="dot"></span>
+                    <span class="handle">@densklll</span>
+                    <span class="sep">—</span>
+                    <span class="role">
+                        <span class="role-base">software developer // tech partner</span>
+                        <span class="role-grad">software developer // tech partner</span>
+                    </span>
+                </a>
+            </footer>
+
+        </div>
+    </div>
+
+    <script>
+        // Reveal-on-scroll с IntersectionObserver, без внешних зависимостей
+        (function(){
+            if ('IntersectionObserver' in window === false) {
+                // Если нет поддержки — показываем всё сразу
+                document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
+                // Фолбэк: показать стаггер-элементы
+                document.querySelectorAll('.stagger-child').forEach(function(el){ el.classList.add('stagger-in'); });
+                var flow = document.querySelector('.flow-steps'); if (flow) flow.classList.add('is-visible');
+                return;
+            }
+            var observer = new IntersectionObserver(function(entries){
+                entries.forEach(function(entry){
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px 12% 0px', threshold: 0.05 });
+            document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+
+            // Mark fonts-loaded after first paint to trigger title animation
+            if (document.documentElement.classList.contains('fonts-loaded') === false) {
+                var markFontsLoaded = function(){ document.documentElement.classList.add('fonts-loaded'); };
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(markFontsLoaded).catch(markFontsLoaded);
+                } else {
+                    requestAnimationFrame(markFontsLoaded);
+                }
+            }
+
+            // Явно проверим футер: если уже в зоне видимости, сразу показать
+            var footerReveal = document.querySelector('footer.reveal');
+            if (footerReveal) {
+                var vh = window.innerHeight || document.documentElement.clientHeight;
+                var rect = footerReveal.getBoundingClientRect();
+                if (rect.top < vh) {
+                    footerReveal.classList.add('visible');
+                    observer.unobserve(footerReveal);
+                }
+            }
+
+            // Дополнительный наблюдатель: поэлементный стаггер внутри видимых секций
+            var staggerObserver = new IntersectionObserver(function(entries){
+                entries.forEach(function(entry){
+                    if (entry.isIntersecting) {
+                        var container = entry.target;
+                        var children = Array.from(container.querySelectorAll('.stagger-child'));
+                        children.forEach(function(node, idx){
+                            node.style.transitionDelay = (idx * 70) + 'ms';
+                            requestAnimationFrame(function(){ node.classList.add('stagger-in'); });
+                        });
+                        // Запуск shine у бенто только один раз
+                        container.querySelectorAll('.bento-item').forEach(function(tile){
+                            tile.classList.add('shine-run');
+                        });
+                        staggerObserver.unobserve(container);
+                    }
+                });
+            }, { rootMargin: '0px 0px 12% 0px', threshold: 0.06 });
+            document.querySelectorAll('#summary .grid, #s1 .space-y-10, #s2 .space-y-10, #s3 .space-y-8, #vstuplenie .intro').forEach(function(group){
+                // Помечаем детей как stagger-child, не меняя разметку
+                group.querySelectorAll(':scope > *').forEach(function(el){ el.classList.add('stagger-child'); });
+                // Текст внутри бенто‑плиток и теги
+                group.querySelectorAll('.bento-item h3, .bento-item p, .tag').forEach(function(el){ el.classList.add('stagger-child'); });
+                staggerObserver.observe(group);
+            });
+
+            // Таймлайн: анимация линии + поочерёдное появление блоков
+            var flowContainer = document.querySelector('#s4 .flow-steps');
+            if (flowContainer) {
+                var started = false;
+                var flowInView = false;
+                var prevPassed80 = false;
+                var prevSection = document.querySelector('#s3');
+
+                function startFlowAnimation(){
+                    if (started || !flowInView || !prevPassed80) return;
+                    started = true;
+                    var steps = Array.from(flowContainer.querySelectorAll('.flow-step'));
+                    flowContainer.classList.add('is-visible');
+                    steps.forEach(function(step, idx){
+                        step.classList.add('stagger-child');
+                        step.style.transitionDelay = (3000 + idx * 1560) + 'ms';
+                        requestAnimationFrame(function(){ step.classList.add('stagger-in'); });
+                    });
+                    // stop observing once started
+                    flowObserver.unobserve(flowContainer);
+                    if (prevSection) prevObserver.unobserve(prevSection);
+                }
+
+                // 1) Следим, что предыдущий блок пролистали на 80% (видимость <= 20%)
+                if (!prevSection) {
+                    prevPassed80 = true; // если предыдущего блока нет — разрешаем сразу
+                }
+                var prevObserver = new IntersectionObserver(function(entries){
+                    entries.forEach(function(entry){
+                        // Когда предыдущая секция видна на 20% или меньше — считаем, что пролистали на 80%
+                        if (entry.intersectionRatio <= 0.2) {
+                            prevPassed80 = true;
+                            startFlowAnimation();
+                        }
+                    });
+                }, { threshold: [0, 0.2] });
+                if (prevSection) prevObserver.observe(prevSection);
+
+                // 2) Следим за видимостью самого таймлайна (#s4)
+                var flowObserver = new IntersectionObserver(function(entries){
+                    entries.forEach(function(entry){
+                        flowInView = entry.isIntersecting && entry.intersectionRatio >= 0.2; // минимум 20% видимости
+                        startFlowAnimation();
+                    });
+                }, { rootMargin: '0px 0px 0px 0px', threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] });
+                flowObserver.observe(flowContainer);
+            }
+        })();
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "MVP запущен — что делать дальше?",
+      "description": "Что делать после запуска MVP: план на первые недели — как найти первых пользователей, собрать отзывы, расставить приоритеты, укрепить код и запустить рост. Пошаговые рекомендации.",
+      "inLanguage": "ru-RU",
+      "url": "/docs/post-launch.html",
+      "primaryImageOfPage": {"@type": "ImageObject", "url": "/favicon.ico"},
+      "author": {"@type": "Person", "name": "@densklll", "url": "https://t.me/densklll_dev"}
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "План после запуска MVP",
+      "description": "Что делать в первые недели после запуска: найти первых пользователей, собрать отзывы, настроить метрики и приоритизировать работу.",
+      "step": [
+        {"@type": "HowToStep", "name": "Найти первых пользователей вручную", "text": "Позовите 10–20 людей из целевой аудитории, сопроводите их и наблюдайте, где возникают трудности."},
+        {"@type": "HowToStep", "name": "Собрать и разобрать отзывы", "text": "Фиксируйте повторяющиеся проблемы, фильтруйте по ключевой аудитории, ведите общую доску замечаний."},
+        {"@type": "HowToStep", "name": "Отслеживать ключевые метрики", "text": "Активация главного действия, удержание (возврат через неделю), первая оплата."},
+        {"@type": "HowToStep", "name": "Расставить приоритеты задач", "text": "Сначала 'пожары', затем 'главное дело', а 'блестяшки' откладывайте."},
+        {"@type": "HowToStep", "name": "Укрепить техническую основу", "text": "Постепенно убирайте 'костыли', фиксируйте долги и закладывайте время на рефакторинг."},
+        {"@type": "HowToStep", "name": "Создать сообщество", "text": "Объедините первых пользователей в закрытый чат, поощряйте их и вовлекайте в развитие продукта."}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Документы", "item": "/docs/"},
+        {"@type": "ListItem", "position": 2, "name": "После запуска MVP", "item": "/docs/post-launch.html"}
+      ]
+    }
+    </script>
+</body>
+</html>
+
